@@ -1,0 +1,43 @@
+apiVersion: v1
+entries:
+  kikkerauth:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2019-02-25T16:02:44.0216601+07:00
+    description: A Helm chart for Kubernetes
+    digest: 0cddaa7330564b4a2ed60b790993227c172efa799deb265f3dea14ccde66aafc
+    name: kikkerauth
+    urls:
+    - kikkerauth-0.1.0.tgz
+    version: 0.1.0
+  kikkercore:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2019-02-25T16:02:44.0216601+07:00
+    description: A Helm chart for Kubernetes
+    digest: 52452eaa00b1494a7b096e0b40cc02d904c18e62e9837d0a32ad0707d0efa4c1
+    name: kikkercore
+    urls:
+    - kikkercore-0.1.0.tgz
+    version: 0.1.0
+  kikkerfrontend:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2019-02-25T16:02:44.0226249+07:00
+    description: A Helm chart for Kubernetes
+    digest: e4774a659e71b215847811ec11d64818a71d078b94af77ca920fc58273f03175
+    name: kikkerfrontend
+    urls:
+    - kikkerfrontend-0.1.0.tgz
+    version: 0.1.0
+  kikkerrate:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2019-02-25T16:02:44.0226249+07:00
+    description: A Helm chart for Kubernetes
+    digest: aedd880c32dde823121f965932c11525aac08afde5dc2e53eb9d077688e57011
+    name: kikkerrate
+    urls:
+    - kikkerrate-0.1.0.tgz
+    version: 0.1.0
+generated: 2019-02-25T16:02:44.0206554+07:00
