@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kikker-maildev
+  namespace: kikkerdev
+spec:
+  gateways:
+  - kikker-gateway-vncluster
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: "/mail"   
+    - uri:
+        prefix: "/mail/" 
+    route:
+    - destination:
+        host: kikkermaildev
+        port:
+          number: 80

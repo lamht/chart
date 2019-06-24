@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: kikker-minio
+  namespace: kikkeruat
+spec:
+  gateways:
+  - kikker-gateway-cloud
+  hosts:
+  - 'demo.kikker.nl'
+  http:
+  - match:
+    - uri:
+        prefix: "/minio"  
+    #rewrite:
+    #  uri: "/minio" 
+    route:
+    - destination:
+        host: kikker-minio
+        port:
+          number: 9000

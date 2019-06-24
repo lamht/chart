@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "kikkermaildev.fullname" . }}
+  labels:
+    app: {{ include "kikkermaildev.name" . }}
+    chart: {{ include "kikkermaildev.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port.http }}
+      targetPort: http
+      protocol: TCP
+      name: http
+      {{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort.http))) }}
+      nodePort: {{ .Values.service.nodePort.http }}
+      {{- end }}
+    - port: {{ .Values.service.port.smtp }}
+      targetPort: smtp
+      name: smtp
+      {{- if (and (eq .Values.service.type "NodePort") (not (empty .Values.service.nodePort.smtp))) }}
+      nodePort: {{ .Values.service.nodePort.smtp }}
+      {{- end }}
+  selector:
+    app: {{ include "kikkermaildev.name" . }}
+    release: {{ .Release.Name }}
