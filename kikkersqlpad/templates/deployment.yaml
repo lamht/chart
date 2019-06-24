@@ -15,6 +15,8 @@ spec:
       release: {{ .Release.Name }}
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
       labels:
         app: {{ include "kikkersqlpad.name" . }}
         release: {{ .Release.Name }}
@@ -35,6 +37,11 @@ spec:
           #  httpGet:
           #    path: /
           #    port: http
+          volumeMounts:
+{{- if .Values.persistence.enabled }}
+            - mountPath: /var/lib/sqlpad
+              name: {{ .Release.Name }}-volume
+{{- end }}
           resources:
 {{ toYaml .Values.resources | indent 12 }}
     {{- with .Values.nodeSelector }}
@@ -49,3 +56,9 @@ spec:
       tolerations:
 {{ toYaml . | indent 8 }}
     {{- end }}
+      volumes:
+{{- if .Values.persistence.enabled }}
+        - name: {{ .Release.Name }}-volume
+          persistentVolumeClaim:
+            claimName: {{ template "kikkersqlpad.fullname" . }}
+{{- end }}
